@@ -1,0 +1,19 @@
+# build
+[Bb]in/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Oo]bj/
+[Oo]ut/
+[Rr]elease/
+[Rr]eleases/
+bld/
+build/
+x64/
+x86/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# editor/local
+.DS_Store
+.vscode
