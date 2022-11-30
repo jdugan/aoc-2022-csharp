@@ -4,5 +4,5 @@ clean:
 	dotnet clean
 run:
 	dotnet run --project app/Aoc.Cli/Aoc.Cli.csproj
-test:
+verify:
 	dotnet test
