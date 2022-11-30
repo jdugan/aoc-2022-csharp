@@ -1,7 +1,7 @@
-# 2021 Advent of Code (Elixir)
+# 2022 Advent of Code (C#)
 
 This repository implements solutions to the puzzles in the
-[2022 Advent of Code](https://adventofcode.com/2022) using Elixir.
+[2022 Advent of Code](https://adventofcode.com/2022) using C#.
 
 
 ## Preface
@@ -37,14 +37,14 @@ commands.
 $ make build
 $ make clean
 $ make run
-$ make test
+$ make verify
 ```
 
 ### File Structure
 
 - [app](./app):     A console app that invokes a given day's runner.
 - [data](./data):   Puzzle input organised by day
-- [src](./lib):     Homegrown utilities
+- [lib](./lib):     Homegrown utilities
 - [site](./site):   A local version of the instruction pages
 - [src](./src):     Puzzle solutions organised by day
 - [test](./test):   A simple set of regression tests
@@ -52,8 +52,14 @@ $ make test
 
 ### Running Daily Solutions
 
-TBD
+Modify the code in the simple console application in `/app/Program.cs`.
 
+Then, simply execute the following command in your terminal from the
+project root.
+
+```
+$ make run
+```
 
 ### Running Tests
 
@@ -67,5 +73,5 @@ To execute the tests, simply execute the following command in
 your terminal from the project root.
 
 ```
-$ make test
+$ make verify
 ```
