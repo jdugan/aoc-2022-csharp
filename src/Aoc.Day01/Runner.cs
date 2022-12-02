@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Aoc.Utility;
 
 ﻿namespace Aoc.Day01;

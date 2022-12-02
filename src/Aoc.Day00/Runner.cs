@@ -30,7 +30,7 @@ public class Runner
 
   private string[] Data()
   {
-    string[] lines = Reader.ToLines("data/day00/input.txt");
+    string[] lines = Reader.ToStrings("data/day00/input.txt");
     return lines;
   }
 }
