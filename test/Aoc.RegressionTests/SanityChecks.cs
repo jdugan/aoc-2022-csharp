@@ -1,6 +1,7 @@
 using Xunit;
 using Aoc.Day01;
 using Aoc.Day02;
+using Aoc.Day03;
 
 namespace Aoc.RegressionTests;
 
@@ -22,5 +23,14 @@ public class SanityChecks
 
       Assert.True(runner.Puzzle1() == 13526);
       Assert.True(runner.Puzzle2() == 14204);
+    }
+
+    [Fact]
+    public void Day03Tests()
+    {
+      var runner = new Aoc.Day03.Runner();
+
+      Assert.True(runner.Puzzle1() == 7831);
+      Assert.True(runner.Puzzle2() == 2683);
     }
 }

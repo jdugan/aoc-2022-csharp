@@ -65,9 +65,9 @@ public class Runner
 
   // ========== DATA =======================================
 
-  private string[] Data()
+  private List<string> Data()
   {
-    string[] lines = Reader.ToStrings("data/day02/input.txt");
+    List<string> lines = Reader.ToStrings("data/day02/input.txt");
     return lines;
   }
 

@@ -30,9 +30,9 @@ public class Runner
 
   // ========== DATA =======================================
 
-  private string[] Data()
+  private List<string> Data()
   {
-    string[] lines = Reader.GetLines("data/day01/input.txt");
+    List<string> lines = Reader.GetLines("data/day01/input.txt");
     return lines;
   }
 

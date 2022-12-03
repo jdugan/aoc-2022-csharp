@@ -28,9 +28,11 @@ public class Runner
   // Private Methods
   //--------------------------------------------------------
 
-  private string[] Data()
+  // ========== DATA =======================================
+
+  private List<string> Data()
   {
-    string[] lines = Reader.ToStrings("data/day00/input.txt");
+    List<string> lines = Reader.ToStrings("data/day00/input.txt");
     return lines;
   }
 }
