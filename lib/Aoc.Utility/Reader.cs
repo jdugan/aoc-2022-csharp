@@ -5,19 +5,19 @@ using System.Text.RegularExpressions;
 
 public class Reader
 {
-  public static int[] ToIntegers(string path)
+  public static List<int> ToIntegers(string path)
   {
-    string[] lines = Reader.ToStrings(path);
-    return lines.Select(s => Int32.Parse(s)).ToArray();
+    List<string> lines = Reader.ToStrings(path);
+    return lines.Select(s => Int32.Parse(s)).ToList();
   }
 
-  public static string[] ToStrings(string path)
+  public static List<string> ToStrings(string path)
   {
-    string[] lines = Reader.GetLines(path);
-    return lines.Where(s => s != "").ToArray();
+    List<string> lines = Reader.GetLines(path);
+    return lines.Where(s => s != "").ToList();
   }
 
-  public static string[] GetLines(string path)
+  public static List<string> GetLines(string path)
   {
     // convert relative path to full path
     Regex  re    = new Regex(@"app|test");
@@ -27,6 +27,6 @@ public class Reader
 
     // read file and read lines
     string[] lines = System.IO.File.ReadAllLines(fpath);
-    return lines.Select(s => s.Trim()).ToArray();
+    return lines.Select(s => s.Trim()).ToList();
   }
 }
