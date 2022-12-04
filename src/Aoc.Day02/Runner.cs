@@ -1,4 +1,3 @@
-using System.IO;
 using Aoc.Utility;
 
 ﻿namespace Aoc.Day02;
