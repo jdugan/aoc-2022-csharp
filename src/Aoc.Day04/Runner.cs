@@ -34,18 +34,18 @@ public class Runner
 
   // ========== AGGREGATORS ================================
 
-  private int ContainsAggregator (int count, List<Assignment> group)
+  private int ContainsAggregator (int count, (Assignment, Assignment) t)
   {
-    if (group[0].Contains(group[1]))
+    if (t.Item1.Contains(t.Item2))
     {
       count += 1;
     }
     return count;
   }
 
-  private int OverlapsAggregator (int count, List<Assignment> group)
+  private int OverlapsAggregator (int count, (Assignment, Assignment) t)
   {
-    if (group[0].Overlaps(group[1]))
+    if (t.Item1.Overlaps(t.Item2))
     {
       count += 1;
     }
@@ -55,17 +55,16 @@ public class Runner
 
   // ========== DATA =======================================
 
-  private List<List<Assignment>> AssignmentGroups()
+  private List<(Assignment, Assignment)> AssignmentGroups()
   {
-    var groups = new List<List<Assignment>>();
+    var groups = new List<(Assignment, Assignment)>();
     var re     = new Regex(@"^(\d+)-(\d+),(\d+)-(\d+)$");
     foreach (string line in this.Data())
     {
-      var m     = re.Match(line);
-      var a1    = new Assignment(Int32.Parse(m.Groups[1].Value), Int32.Parse(m.Groups[2].Value));
-      var a2    = new Assignment(Int32.Parse(m.Groups[3].Value), Int32.Parse(m.Groups[4].Value));
-      var group = new List<Assignment> { a1, a2 };
-      groups.Add(group);
+      var m  = re.Match(line);
+      var a1 = new Assignment(Int32.Parse(m.Groups[1].Value), Int32.Parse(m.Groups[2].Value));
+      var a2 = new Assignment(Int32.Parse(m.Groups[3].Value), Int32.Parse(m.Groups[4].Value));
+      groups.Add((a1, a2));
     }
     return groups;
   }
