@@ -2,8 +2,9 @@ using Aoc.Day01;
 using Aoc.Day02;
 using Aoc.Day03;
 using Aoc.Day04;
+using Aoc.Day05;
 
-﻿var runner = new Aoc.Day04.Runner();
+﻿var runner = new Aoc.Day05.Runner();
 
 Console.WriteLine("");
 Console.WriteLine("DAY {0}:", runner.Day());
