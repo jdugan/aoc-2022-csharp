@@ -53,4 +53,13 @@ public class SanityChecks
       Assert.True(runner.Puzzle1() == "ZWHVFWQWW");
       Assert.True(runner.Puzzle2() == "HZFZCCWWV");
     }
+
+    [Fact]
+    public void Day06Tests()
+    {
+      var runner = new Aoc.Day06.Runner();
+
+      Assert.True(runner.Puzzle1() == 1702);
+      Assert.True(runner.Puzzle2() == 3559);
+    }
 }
