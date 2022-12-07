@@ -1,11 +1,9 @@
-using Aoc.Day01;
-using Aoc.Day02;
-using Aoc.Day03;
-using Aoc.Day04;
-using Aoc.Day05;
-using Aoc.Day06;
+// --------------------------------------------------------
+// This is a simple CLI interface for running
+// puzzle solutions.
+// --------------------------------------------------------
 
-﻿var runner = new Aoc.Day06.Runner();
+﻿var runner = new Aoc.Day08.Runner();
 
 Console.WriteLine("");
 Console.WriteLine("DAY {0}:", runner.Day());
