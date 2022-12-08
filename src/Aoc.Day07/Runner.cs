@@ -51,8 +51,7 @@ public class Runner
     lines.RemoveAt(0);
 
     // build root directory
-    Folder? dummy = null;
-    var root      = new Folder(dummy, "/", 0);
+    var root      = new Folder(null, "/", 0);
     Folder parent = root;
 
     // set parsing regex
