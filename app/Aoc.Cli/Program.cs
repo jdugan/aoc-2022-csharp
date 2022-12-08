@@ -3,7 +3,7 @@
 // puzzle solutions.
 // --------------------------------------------------------
 
-﻿var runner = new Aoc.Day08.Runner();
+﻿var runner = new Aoc.Day09.Runner();
 
 Console.WriteLine("");
 Console.WriteLine("DAY {0}:", runner.Day());

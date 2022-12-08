@@ -72,6 +72,15 @@ public class SanityChecks
     {
       var runner = new Aoc.Day08.Runner();
 
+      Assert.True(runner.Puzzle1() == 1789);
+      Assert.True(runner.Puzzle2() == 314820);
+    }
+
+    [Fact]
+    public void Day09Tests()
+    {
+      var runner = new Aoc.Day09.Runner();
+
       Assert.True(runner.Puzzle1() == -1);
       Assert.True(runner.Puzzle2() == -2);
     }
