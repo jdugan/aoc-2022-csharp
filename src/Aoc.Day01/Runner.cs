@@ -32,8 +32,7 @@ public class Runner
 
   private List<string> Data()
   {
-    List<string> lines = Reader.GetLines("data/day01/input.txt");
-    return lines;
+    return Reader.GetLines("data/day01/input.txt");
   }
 
   private List<int> Rations()

@@ -66,8 +66,7 @@ public class Runner
 
   private List<string> Data()
   {
-    List<string> lines = Reader.ToStrings("data/day02/input.txt");
-    return lines;
+    return Reader.ToStrings("data/day02/input.txt");
   }
 
 }
