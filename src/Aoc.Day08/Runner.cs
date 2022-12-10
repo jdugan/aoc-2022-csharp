@@ -139,8 +139,7 @@ public class Runner
 
   private List<string> Data()
   {
-    List<string> lines = Reader.ToStrings("data/day08/input.txt");
-    return lines;
+    return Reader.ToStrings("data/day08/input.txt");
   }
 
   private List<List<int>> Trees()
