@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 using Aoc.Utility;
 
-﻿namespace Aoc.Day00;
+﻿namespace Aoc.Day12;
 
 public class Runner
 {
@@ -12,7 +12,7 @@ public class Runner
 
   public int Day()
   {
-    return 0;
+    return 12;
   }
 
   public int Puzzle1()
@@ -33,6 +33,6 @@ public class Runner
 
   private List<string> Data()
   {
-    return Reader.ToStrings("data/day00/input.txt");
+    return Reader.ToStrings("data/day12/input.txt");
   }
 }

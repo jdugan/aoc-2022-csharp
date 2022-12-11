@@ -93,4 +93,22 @@ public class SanityChecks
       Assert.True(runner.Puzzle1() == 14160);
       Assert.True(runner.Puzzle2() == "RJERPEFC");
     }
+
+    [Fact]
+    public void Day11Tests()
+    {
+      var runner = new Aoc.Day11.Runner();
+
+      Assert.True(runner.Puzzle1() == 69918);
+      Assert.True(runner.Puzzle2() == 19573408701);
+    }
+
+    [Fact]
+    public void Day12Tests()
+    {
+      var runner = new Aoc.Day12.Runner();
+
+      Assert.True(runner.Puzzle1() == -1);
+      Assert.True(runner.Puzzle2() == -2);
+    }
 }
