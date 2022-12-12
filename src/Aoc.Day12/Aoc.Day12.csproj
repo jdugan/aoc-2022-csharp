@@ -10,4 +10,8 @@
     <ProjectReference Include="..\..\lib\Aoc.Utility\Aoc.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dijkstra.NET" Version="1.2.1" />
+  </ItemGroup>
+
 </Project>

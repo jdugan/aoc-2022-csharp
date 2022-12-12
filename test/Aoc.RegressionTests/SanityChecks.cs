@@ -108,7 +108,7 @@ public class SanityChecks
     {
       var runner = new Aoc.Day12.Runner();
 
-      Assert.True(runner.Puzzle1() == -1);
-      Assert.True(runner.Puzzle2() == -2);
+      Assert.True(runner.Puzzle1() == 462);
+      Assert.True(runner.Puzzle2() == 451);
     }
 }
