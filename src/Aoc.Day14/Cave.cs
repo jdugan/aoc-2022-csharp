@@ -24,8 +24,6 @@ public class Cave
   public int SandVolume ()
   {
     bool overflowing = false;
-    int  volume      = 0;
-
     while (!overflowing)
     {
       overflowing = this.Drop();

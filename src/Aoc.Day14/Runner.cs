@@ -100,8 +100,7 @@ public class Runner
 
   private Cave CaveWithoutFloor (int x, int y)
   {
-    var origin    = (x, y);
-    var tiles     = this.Tiles();
+    var tiles = this.Tiles();
     foreach (int i in Enumerable.Range(1,10))
     {
       int x0 = x - i;
