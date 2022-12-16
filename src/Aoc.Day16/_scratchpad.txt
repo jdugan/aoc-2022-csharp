@@ -1,0 +1,68 @@
+// ========== RUNNER ======================================
+
+private (List<Scenario>, Scenario) CompressPossibles (List<Scenario> newPossibles, Scenario best, int limit)
+{
+  var possibles = new List<Scenario>();
+  foreach (var np in newPossibles)
+  {
+    if (np.Clock < limit)
+    {
+      possibles.Add(np);
+    }
+    else
+    {
+      if (np.Pressure > best.Pressure)
+      {
+        best = np;
+      }
+    }
+  }
+  return (possibles, best);
+}
+
+
+// ========== SCENARIO ====================================
+
+public void OpenValve ()
+{
+  this.Destinations[this.Position].Open();
+}
+
+public void Move (string position)
+{
+  this.Position = position;
+  this.Path.Add(position);
+}
+
+public void Wait (int ticks, int limit)
+{
+  foreach (int _ in Enumerable.Range(0, ticks))
+  {
+    if (this.Clock < limit)
+    {
+      this.Accumulate();
+      this.Tick();
+    }
+  }
+}
+
+public List<(string, int)> AvailableSteps ()
+{
+  var curr  = this.Valves[this.Position];
+  var steps = new List<(string, int)>();
+  var vids  = this.Valves.Values.
+                  Where(v => v.Id != curr.Id && v.IsPressureAvailable()).
+                  Select(v => v.Id).
+                  ToList();
+
+  foreach (string vid in vids)
+  {
+    var graph  = this.Graph;
+    var dest   = this.Valves[vid];
+    var result = graph.Dijkstra(curr.GraphId, dest.GraphId);
+
+    steps.Add((dest.Id, result.Distance));
+  }
+
+  return steps;
+}

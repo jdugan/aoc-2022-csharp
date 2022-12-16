@@ -24,16 +24,6 @@ public class Runner
     var terminus = this.FindSquare(squares, "E");
     var result   = graph.Dijkstra(origin.GraphId, terminus.GraphId);
 
-    // var pathIds  = result.GetPath().ToList();
-    // foreach (var sq in squares.Values)
-    // {
-    //   if (pathIds.Contains(sq.GraphId))
-    //   {
-    //     sq.AddToPath();
-    //   }
-    // }
-    // this.PrintSquares(squares);
-
     return result.Distance;
   }
 

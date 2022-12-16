@@ -138,4 +138,13 @@ public class SanityChecks
       Assert.True(runner.Puzzle1() == 5147333);
       Assert.True(runner.Puzzle2() == 13734006908372);    // pretty slow
     }
+
+    [Fact]
+    public void Day16Tests()
+    {
+      var runner = new Aoc.Day16.Runner();
+
+      Assert.True(runner.Puzzle1() == -1);
+      Assert.True(runner.Puzzle2() == -2);
+    }
 }
