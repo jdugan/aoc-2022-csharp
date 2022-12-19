@@ -144,6 +144,33 @@ public class SanityChecks
     {
       var runner = new Aoc.Day16.Runner();
 
+      Assert.True(runner.Puzzle1() == 1559);
+      Assert.True(runner.Puzzle2() == -2);
+    }
+
+    [Fact]
+    public void Day17Tests()
+    {
+      var runner = new Aoc.Day17.Runner();
+
+      Assert.True(runner.Puzzle1() == -1);
+      Assert.True(runner.Puzzle2() == -2);
+    }
+
+    [Fact]
+    public void Day18Tests()
+    {
+      var runner = new Aoc.Day18.Runner();
+
+      Assert.True(runner.Puzzle1() == 4192);
+      Assert.True(runner.Puzzle2() == 2520);      // very slow
+    }
+
+    [Fact]
+    public void Day19Tests()
+    {
+      var runner = new Aoc.Day19.Runner();
+
       Assert.True(runner.Puzzle1() == -1);
       Assert.True(runner.Puzzle2() == -2);
     }
