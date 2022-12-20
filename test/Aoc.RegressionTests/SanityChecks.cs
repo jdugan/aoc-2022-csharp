@@ -145,7 +145,7 @@ public class SanityChecks
       var runner = new Aoc.Day16.Runner();
 
       Assert.True(runner.Puzzle1() == 1559);
-      Assert.True(runner.Puzzle2() == -2);
+      // Assert.True(runner.Puzzle2() == -2);
     }
 
     [Fact]
@@ -153,8 +153,8 @@ public class SanityChecks
     {
       var runner = new Aoc.Day17.Runner();
 
-      Assert.True(runner.Puzzle1() == -1);
-      Assert.True(runner.Puzzle2() == -2);
+      Assert.True(runner.Puzzle1() == 3085);
+      Assert.True(runner.Puzzle2() == 1535483870924);
     }
 
     [Fact]
@@ -174,4 +174,13 @@ public class SanityChecks
       Assert.True(runner.Puzzle1() == -1);
       Assert.True(runner.Puzzle2() == -2);
     }
+
+    // [Fact]
+    // public void Day20Tests()
+    // {
+    //   var runner = new Aoc.Day20.Runner();
+    //
+    //   Assert.True(runner.Puzzle1() == -1);
+    //   Assert.True(runner.Puzzle2() == -2);
+    // }
 }
