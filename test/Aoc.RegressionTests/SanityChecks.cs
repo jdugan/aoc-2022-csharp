@@ -163,7 +163,7 @@ public class SanityChecks
       var runner = new Aoc.Day18.Runner();
 
       Assert.True(runner.Puzzle1() == 4192);
-      Assert.True(runner.Puzzle2() == 2520);      // very slow
+      Assert.True(runner.Puzzle2() == 2520);      // very slow :(
     }
 
     [Fact]
@@ -176,11 +176,20 @@ public class SanityChecks
     }
 
     // [Fact]
-    // public void Day20Tests()
-    // {
-    //   var runner = new Aoc.Day20.Runner();
-    //
-    //   Assert.True(runner.Puzzle1() == -1);
-    //   Assert.True(runner.Puzzle2() == -2);
-    // }
+    public void Day20Tests()
+    {
+      var runner = new Aoc.Day20.Runner();
+
+      Assert.True(runner.Puzzle1() == 872);
+      Assert.True(runner.Puzzle2() == 5382459262696);
+    }
+
+    [Fact]
+    public void Day21Tests()
+    {
+      var runner = new Aoc.Day21.Runner();
+
+      Assert.True(runner.Puzzle1() == -1);
+      Assert.True(runner.Puzzle2() == -2);
+    }
 }

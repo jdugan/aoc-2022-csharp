@@ -17,3 +17,4 @@ msbuild.wrn
 # editor/local
 .DS_Store
 .vscode
+tmp/
