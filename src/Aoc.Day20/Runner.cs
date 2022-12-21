@@ -1,5 +1,3 @@
-using System.Text.RegularExpressions;
-
 using Aoc.Utility;
 
 ﻿namespace Aoc.Day20;
@@ -15,100 +13,98 @@ public class Runner
     return 20;
   }
 
-  // WRONG: 2637 => too high (0 at 1312)
-  public int Puzzle1()
+  public long Puzzle1()
   {
-    var nodes                  = this.BuildList();
-    var linked                 = this.BuildLinkedList(nodes);
-    var (idxToNode, nodeToIdx) = this.BuildDictionaries(linked);
-    var count                  = nodes.Count;
+    var tuples = this.PerformMix(1, 1);
+    var coords = this.GetCoordinates(tuples);
 
-    Console.WriteLine("");
-    foreach (var n in nodes)
-    {
-      Console.WriteLine(n.Value);
-      if (n.Value % count != 0) // only bother if node moves
-      {
-        // get the nodes and indices
-        var node1  = linked.Find(n);
-        var index1 = nodeToIdx[n];
-        var index2 = (((index1 + n.Value) % count) + count) % count; // adjust and force to positive num
-        var node2  = linked.Find(idxToNode[index2]);
-        if (n.Value == 10000)
-        {
-          Console.WriteLine("  {0}, {1}, {2}, {3}", node1.Value.Value, index1, index2, node2.Value.Value);
-        }
-
-        // update linked list
-        linked.Remove(node1);
-        if (n.Value > 0)
-        {
-          linked.AddAfter(node2, node1);
-        }
-        else
-        {
-          linked.AddBefore(node2, node1);
-        }
-
-        // update dictionaries
-        (idxToNode, nodeToIdx) = this.BuildDictionaries(linked);
-      }
-      // Console.WriteLine("{0} => {1}", n.Value, String.Join(",", linked.Select(n => n.Value)));
-    }
-    Console.WriteLine("");
-
-    var n0    = nodes.Where(n => n.Value == 0).ToList()[0];
-    var i0    = nodeToIdx[n0];
-    var i1    = (i0 + 1000) % count;
-    var i2    = (i0 + 2000) % count;
-    var i3    = (i0 + 3000) % count;
-    Console.WriteLine(n0.Id);
-    Console.WriteLine(n0.Value);
-    Console.WriteLine(i0);
-    Console.WriteLine(i1);
-    Console.WriteLine(i2);
-    Console.WriteLine(i3);
-    Console.WriteLine(idxToNode[i1].Value);
-    Console.WriteLine(idxToNode[i2].Value);
-    Console.WriteLine(idxToNode[i3].Value);
-
-    var score = idxToNode[i1].Value + idxToNode[i2].Value + idxToNode[i3].Value;
-
-    return score;
+    return coords.Sum();
   }
 
-  public int Puzzle2()
+  public long Puzzle2()
   {
-    return -2;
+    var tuples = this.PerformMix(10, 811589153);
+    var coords = this.GetCoordinates(tuples);
+
+    return coords.Sum();
   }
 
   //-------------------------------------------------------
   // Private Methods
   //-------------------------------------------------------
 
+  // ========== MIXING ====================================
+
+  private List<(long, long)> PerformMix (int times, long factor)
+  {
+    // set working variables
+    var tuples = this.BuildList(factor);
+    var count  = tuples.Count;
+
+    // mix n times
+    foreach (int _ in Enumerable.Range(0, times))
+    {
+      // process in original id order
+      foreach (int id in Enumerable.Range(0, count))
+      {
+        // find the id in the current list
+        foreach (var (i, t) in tuples.Select((v, i) => (i, v)))
+        {
+          if (t.Item1 == id)
+          {
+            // determine new index
+            var idx = (i + t.Item2) % (count - 1);
+            if (idx < 0) {
+              idx = idx + count - 1;
+            }
+
+            // remove the tuple and add it back in the new spot
+            tuples.Remove(t);
+            tuples.Insert((int)idx, t);
+
+            // stop searching
+            break;
+          }
+        }
+      }
+    }
+
+    return tuples;
+  }
+
+  // ========== SCORING ===================================
+
+  private List<long> GetCoordinates (List<(long, long)> tuples)
+  {
+    // find origin index
+    int idx0 = 0;
+    foreach (var t in tuples) {
+      if (t.Item2 == 0) {
+        break;
+      }
+      idx0 += 1;
+    }
+
+    // find grove coord indices
+    int idx1 = (idx0 + 1000) % (tuples.Count);
+    int idx2 = (idx0 + 2000) % (tuples.Count);
+    int idx3 = (idx0 + 3000) % (tuples.Count);
+
+    // add coord values to list
+    var coords = new List<long>();
+    coords.Add(tuples[idx1].Item2);
+    coords.Add(tuples[idx2].Item2);
+    coords.Add(tuples[idx3].Item2);
+    return coords;
+  }
+
+
   // ========== STRUCTURES ================================
 
-  private (Dictionary<int, Node>, Dictionary<Node, int>) BuildDictionaries (LinkedList<Node> linked)
-  {
-    var idxToNode = new Dictionary<int, Node>();
-    var nodeToIdx = new Dictionary<Node, int>();
-    foreach (var (idx, node) in linked.Select((v, i) => (i, v)))
-    {
-      idxToNode[idx]  = node;
-      nodeToIdx[node] = idx;
-    }
-    return (idxToNode, nodeToIdx);
-  }
-
-  private LinkedList<Node> BuildLinkedList (List<Node> list)
-  {
-    return new LinkedList<Node>(list);
-  }
-
-  private List<Node> BuildList ()
+  private List<(long, long)> BuildList(long factor)
   {
     return this.Data().
-              Select((v, i) => new Node(i, v)).
+              Select((v, i) => ((long)i, (long)v*factor)).
               ToList();
   }
 
