@@ -7,17 +7,26 @@ public class Reader
 {
   public static List<int> ToIntegers(string path)
   {
-    List<string> lines = Reader.ToStrings(path);
-    return lines.Select(s => Int32.Parse(s)).ToList();
+    return Reader.ToStrings(path).
+              Select(s => Int32.Parse(s)).
+              ToList();
   }
 
   public static List<string> ToStrings(string path)
   {
-    List<string> lines = Reader.GetLines(path);
-    return lines.Where(s => s != "").ToList();
+    return Reader.GetLines(path).
+              Where(s => s != "").
+              ToList();
   }
 
   public static List<string> GetLines(string path)
+  {
+    return Reader.GetRawLines(path).
+              Select(s => s.Trim()).
+              ToList();
+  }
+
+  public static List<string> GetRawLines(string path)
   {
     // convert relative path to full path
     Regex  re    = new Regex(@"app|test");
@@ -26,7 +35,8 @@ public class Reader
     string fpath = Path.Join(dir.Substring(0, index), path);
 
     // read file and read lines
-    string[] lines = System.IO.File.ReadAllLines(fpath);
-    return lines.Select(s => s.Trim()).ToList();
+    return System.IO.File.
+              ReadAllLines(fpath).
+              ToList();
   }
 }
