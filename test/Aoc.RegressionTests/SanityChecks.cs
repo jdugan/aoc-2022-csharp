@@ -145,7 +145,7 @@ public class SanityChecks
       var runner = new Aoc.Day16.Runner();
 
       Assert.True(runner.Puzzle1() == 1559);
-      // Assert.True(runner.Puzzle2() == -2);
+      Assert.True(runner.Puzzle2() == 2191);
     }
 
     [Fact]

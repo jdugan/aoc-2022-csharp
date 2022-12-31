@@ -23,6 +23,8 @@ public class Valve : IComparable
   // Public Methods
   // ------------------------------------------------------
 
+  // ========== SORTING ===================================
+  
   public int CompareTo (object? obj)
   {
     Valve other = (Valve)obj;
