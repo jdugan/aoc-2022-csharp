@@ -190,7 +190,7 @@ public class SanityChecks
       var runner = new Aoc.Day21.Runner();
 
       Assert.True(runner.Puzzle1() == 155708040358220);
-      Assert.True(runner.Puzzle2() == -2);
+      Assert.True(runner.Puzzle2() == 3342154812537);
     }
 
     [Fact]
@@ -226,6 +226,6 @@ public class SanityChecks
       var runner = new Aoc.Day25.Runner();
 
       Assert.True(runner.Puzzle1() == "20=02=120-=-2110-0=1");
-      Assert.True(runner.Puzzle2() == -2);
+      Assert.True(runner.Puzzle2() == 50);
     }
 }

@@ -234,7 +234,6 @@ mgtl: 3
 jfct: 10
 ptdj: 5
 lswb: qpcp + njmd
-humn: 2037
 lljf: pgvf / mjnz
 nflw: 2
 vtng: 5
@@ -1665,7 +1664,6 @@ bsjv: 2
 hsvg: 3
 vspg: mnwd * vdsb
 znzr: zqjq * bsjg
-nmsp: humn - dnhg
 zszf: 4
 fvrw: nbqz + tdzr
 fljh: 4
@@ -2173,7 +2171,6 @@ qqvh: dqlt + qpgd
 lngg: ddlw + vwjq
 lscd: nbdp * cssj
 bjqh: 2
-root: qhbp + vglr
 bczs: 8
 wjtf: wdmg * dnln
 stsl: 3
@@ -2517,3 +2514,6 @@ grgq: zldd * vtvh
 lsrv: 2
 wrfm: 2
 zdsc: zmcd * qjlg
+humn: 2037
+nmsp: humn - dnhg
+root: qhbp + vglr

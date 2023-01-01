@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace Aoc.Day21;
 
 public class Monkey
@@ -15,7 +17,7 @@ public class Monkey
   }
   public string       Id     { get; private set; }
   public List<string> Keys   { get; private set; }
-  public string       Symbol { get; private set; }
+  public string       Symbol { get; set; }
   public List<long>   Values { get; private set; }
 
 
@@ -23,27 +25,72 @@ public class Monkey
   // Public Methods
   // ------------------------------------------------------
 
-  // ========== FORWARD ===================================
+  // ========== EXPANSION =================================
 
-  public void ForwardTranslation (Dictionary<string, Monkey> monkeys)
+  public ArrayList ExpressionForKey (string key)
+  {
+    if (this.HasValue())
+    {
+      return new ArrayList{ this.Value() };
+    }
+    else
+    {
+      var isFirst = (this.Keys[0] == key);
+      var term    = this.Id;
+      var value   = (isFirst) ? this.Values[1] : this.Values[0];
+      var inverse = Int64.Parse("-1");
+
+      switch (this.Symbol)
+      {
+        case "*":
+          return new ArrayList{ term, value, "/" };
+        case "/":
+          if (isFirst) {
+            return new ArrayList{ term, value, "*" };
+          }
+          else {
+            return new ArrayList{ term, inverse, "**", value, "*" };
+          }
+        case "+":
+          return new ArrayList{ term, value, "-" };
+        case "-":
+          if (isFirst) {
+            return new ArrayList{ term, value, "+" };
+          }
+          else {
+            return new ArrayList{ term, inverse, "*", value, "+" };
+          }
+        default:
+          return new ArrayList();
+      }
+    }
+  }
+
+
+  // ========== REDUCTION =================================
+
+  public void Translation (Dictionary<string, Monkey> monkeys)
   {
     for (int i = 0; i < this.Keys.Count; i++)
     {
       var k = this.Keys[i];
       var v = this.Values[i];
-      var m = monkeys[k];
 
-      if (v == Int64.MinValue)
+      if (monkeys.ContainsKey(k))
       {
-        if (m.HasForwardValue())
+        var m = monkeys[k];
+        if (v == Int64.MinValue)
         {
-          this.Values[i] = m.ForwardValue();
+          if (m.HasValue())
+          {
+            this.Values[i] = m.Value();
+          }
         }
       }
     }
   }
 
-  public long ForwardValue()
+  public long Value()
   {
     switch (this.Symbol)
     {
@@ -60,7 +107,14 @@ public class Monkey
     }
   }
 
-  public bool NeedsForwardTranslation ()
+  // ========== STATE =====================================
+
+  public bool HasValue ()
+  {
+    return !this.NeedsTranslation();
+  }
+
+  public bool NeedsTranslation ()
   {
     var count = this.Values.Where(v => v == Int64.MinValue).ToList().Count;
     return count > 0;
@@ -75,7 +129,7 @@ public class Monkey
       Console.WriteLine(
         "{0} => {1}",
         this.Id,
-        this.ForwardValue()
+        this.Value()
       );
     }
     else {
@@ -87,20 +141,8 @@ public class Monkey
         this.Symbol,
         this.Keys[1],
         this.Values[1],
-        this.ForwardValue()
+        this.Value()
       );
     }
-  }
-
-
-  // ------------------------------------------------------
-  // Private Methods
-  // ------------------------------------------------------
-
-  // ========== FORWARD ===================================
-
-  private bool HasForwardValue ()
-  {
-    return !this.NeedsForwardTranslation();
   }
 }
