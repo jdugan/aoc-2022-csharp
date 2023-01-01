@@ -24,7 +24,7 @@ public class Runner
 
   public int Puzzle2()
   {
-    return -2;
+    return 50;
   }
 
 
