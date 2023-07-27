@@ -17,11 +17,4 @@ public class Robot
   public int    OreCost      { get; private set; }
   public int    ClayCost     { get; private set; }
   public int    ObsidianCost { get; private set; }
-
-
-  // ------------------------------------------------------
-  // Public Methods
-  // ------------------------------------------------------
-
-
 }

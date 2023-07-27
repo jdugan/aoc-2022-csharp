@@ -171,8 +171,8 @@ public class SanityChecks
     {
       var runner = new Aoc.Day19.Runner();
 
-      Assert.True(runner.Puzzle1() == -1);
-      Assert.True(runner.Puzzle2() == -2);
+      Assert.True(runner.Puzzle1() == 1294);
+      Assert.True(runner.Puzzle2() == 13640);
     }
 
     [Fact]

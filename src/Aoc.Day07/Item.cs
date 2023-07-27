@@ -15,8 +15,4 @@ public class Item
   public Folder Parent { get; private set; }
   public string Name   { get; private set; }
   public int    Size   { get; private set; }
-
-  // ------------------------------------------------------
-  // Public Methods
-  // ------------------------------------------------------
 }
