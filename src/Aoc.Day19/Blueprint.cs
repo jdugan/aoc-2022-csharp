@@ -21,69 +21,30 @@ public class Blueprint
 
   // ========== ATTRIBUTES ================================
 
-  public int QualityLevel (int minutes)
+  public int MaxGeodes (int minutes, int take)
   {
-    return this.Id * this.CalculateMaxGeodes(minutes);
-  }
+    var costs       = this.Robots;
+    var materials   = new Dictionary<string, int>{ {"ore",0}, {"clay",0}, {"obsidian",0}, {"geode",0} };
+    var workers     = new Dictionary<string, int>{ {"ore",1}, {"clay",0}, {"obsidian",0}, {"geode",0} };
+    var simulations = new List<Simulation>();
 
-  public Dictionary<string, (int, int, int)> RobotCosts ()
-  {
-    var costs = new Dictionary<string, (int, int, int)>();
-    Console.WriteLine("");
-    Console.WriteLine("=========================");
-    foreach (var r in this.Robots)
+    simulations.Add(new Simulation(costs, materials, workers));
+    for (int t = 1; t <= minutes; t++)
     {
-      costs[r.Type] = (r.OreCost, r.ClayCost, r.ObsidianCost);
-      Console.WriteLine((r.Type, r.OreCost, r.ClayCost, r.ObsidianCost));
-    }
-    Console.WriteLine("=========================");
-    Console.WriteLine("");
-    return costs;
-  }
-
-
-  // ========== CALCULATIONS ==============================
-
-  public int CalculateMaxGeodes (int minutes)
-  {
-    var best        = 0;
-    var costs       = this.RobotCosts();
-    var targetPerms = this.BuildTargetPermutations();
-
-    foreach (var targets in targetPerms)
-    {
-      var simulation = new Simulation(costs, targets);
-      var result     = simulation.CalculateMaxGeodes(minutes, best);
-
-      if (result > best)
+      var _simulations = new List<Simulation>();
+      foreach (var s in simulations)
       {
-        best = result;
+        _simulations.AddRange(s.Iterate());
       }
+      _simulations.Sort();
+      simulations = _simulations.Take(take).ToList();
     }
 
-    return best;
+    return simulations[0].Materials["geode"];
   }
 
-
-  // ========== PERMUTATIONS ==============================
-
-  private List<Dictionary<string, int>> BuildTargetPermutations ()
+  public int QualityLevel (int minutes, int take)
   {
-    var perms = new List<Dictionary<string, int>>();
-    for (int ore = 0; ore <= 0; ore++)
-    {
-      for (int clay = 1; clay <= 3; clay++)
-      {
-        for (int obsidian = 1; obsidian <= 2; obsidian++)
-        {
-          var d         = new Dictionary<string, int>();
-          d["ore"]      = ore;
-          d["clay"]     = clay;
-          d["obsidian"] = obsidian;
-          perms.Add(d);
-        }
-      }
-    }
-    return perms;
+    return this.Id * this.MaxGeodes(minutes, take);
   }
 }

@@ -1,12 +1,47 @@
-.calendar .calendar-color-c { color:#eeeeee; }
-.calendar .calendar-color-g3 { color:#427322; }
-.calendar .calendar-color-g4 { color:#01461f; }
-.calendar .calendar-color-g1 { color:#4d8b03; }
 .calendar .calendar-color-w { color:#ffffff; }
+.calendar .calendar-color-g3 { color:#427322; }
+.calendar .calendar-color-a { color:#aaaaaa; }
+.calendar .calendar-color-g1 { color:#4d8b03; }
+.calendar .calendar-color-d { color:#685c46; }
+.calendar .calendar-color-y { color:#ffc700; }
 .calendar .calendar-color-l { color:#e6410b; }
-.calendar .calendar-color-g2 { color:#7fbd39; }
 .calendar .calendar-color-s { color:#d0b376; }
 .calendar .calendar-color-g0 { color:#488813; }
-.calendar .calendar-color-a { color:#aaaaaa; }
-.calendar .calendar-color-d { color:#685c46; }
+.calendar .calendar-color-o { color:#d64200; }
+.calendar .calendar-color-g2 { color:#7fbd39; }
 .calendar .calendar-color-u { color:#5eabb4; }
+.calendar .calendar-color-c { color:#eeeeee; }
+.calendar .calendar-color-g4 { color:#01461f; }
+.calendar .calendar-color-p { color:#630031; }
+@keyframes anim-balloon-wind {
+    0% { transform: translateX( 0.0em); opacity: 0; }
+    5% { transform: translateX( 1.3em); opacity: 1; }
+   95% { transform: translateX(24.7em); opacity: 1; }
+  100% { transform: translateX(26.0em); opacity: 0; }
+}
+@keyframes anim-balloon {
+    0% { transform: translateY(0); }
+   50% { transform: translateY(-1em); }
+  100% { transform: translateY(0); }
+}
+.balloon-wind {
+  position: absolute;
+  animation: anim-balloon-wind linear 60s infinite;
+  animation-delay: 0s;
+  opacity: 0;
+}
+.balloon {
+  display: inline-block;
+  animation: anim-balloon ease-in-out 10s infinite;
+}
+.balloon::before {
+  content: "o";
+  display: inline-block;
+  transform: scale(1.2);
+}
+.balloon::after {
+  content: "\\/";
+  display: inline-block;
+  font-weight: bold;
+  transform: translate(-75%,30%) scale(.5);
+}

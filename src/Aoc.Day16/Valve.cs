@@ -24,7 +24,7 @@ public class Valve : IComparable
   // ------------------------------------------------------
 
   // ========== SORTING ===================================
-  
+
   public int CompareTo (object? obj)
   {
     Valve other = (Valve)obj;

@@ -25,10 +25,4 @@ public class Monkey
   public int       ThrowDivisor  { get; private set; }
   public int       ThrowFalseTo  { get; private set; }
   public int       ThrowTrueTo   { get; private set; }
-
-
-  // ------------------------------------------------------
-  // Public Methods
-  // ------------------------------------------------------
-
 }

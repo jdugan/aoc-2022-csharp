@@ -15,17 +15,20 @@ public class Runner
     return 19;
   }
 
+  // 1076 > too low
   public int Puzzle1()
   {
-    // return this.BuildBlueprints().
-    //           Select(b => b.QualityLevel(24)).
-    //           Sum();
-    return -1;
+    return this.BuildBlueprints().
+              Select(b => b.QualityLevel(24, 102)).
+              Sum();
   }
 
   public int Puzzle2()
   {
-    return -2;
+    return this.BuildBlueprints().
+              Take(3).
+              Select(b => b.MaxGeodes(32, 547)).
+              Aggregate((x, y) => x * y);
   }
 
   //-------------------------------------------------------
@@ -65,6 +68,6 @@ public class Runner
 
   private List<string> Data()
   {
-    return Reader.ToStrings("data/day19/input-test.txt");
+    return Reader.ToStrings("data/day19/input.txt");
   }
 }
