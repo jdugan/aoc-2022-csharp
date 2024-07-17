@@ -20,7 +20,7 @@ The examples are representative of my thinking and coding style.
 
 ### Prerequisites
 
-The project requires `.Net 6.0`, but any reasonably current version of
+The project requires `.Net 8.0`, but any reasonably current version of
 .Net will likely work. I tend to code done the middle of any language
 specification.
 

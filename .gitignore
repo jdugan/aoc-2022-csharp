@@ -17,4 +17,5 @@ msbuild.wrn
 # editor/local
 .DS_Store
 .vscode
+data/**/input.txt
 tmp/
